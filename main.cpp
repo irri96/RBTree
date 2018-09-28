@@ -10,7 +10,7 @@
 using namespace std;
 
 int main(){
-	
+	//aumento el tamanio del stack
 	rlimit rl;
 	getrlimit(RLIMIT_STACK, &rl);
 	rl.rlim_cur=1024L*1024L*256L;//256mb

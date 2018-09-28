@@ -17,7 +17,7 @@ void BinarySearchTree::destruir(node *nodo){
 	}
 	free(nodo);
 }
-
+//destroy in postorder
 BinarySearchTree::~BinarySearchTree(){
 	if(_root!=NULL) destruir(_root);
 }
