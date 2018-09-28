@@ -19,7 +19,7 @@ void AVLTree::destruir(AVLnode *nodo){
 }
 
 AVLTree::~AVLTree(){
-	destruir(_root);
+	if(_root!=NULL) destruir(_root);
 }
 
 int AVLTree::height(AVLnode *N) { 

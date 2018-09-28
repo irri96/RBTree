@@ -11,6 +11,20 @@ RBTree::RBTree(){
 	root = NULL;
 }
 
+void RBTree::destruir(RBNode *nodo){
+	if(nodo->l!=NULL){
+		destruir(nodo->l);
+	}
+	if(nodo->r!=NULL){
+		destruir(nodo->r);
+	}
+	delete nodo;
+}
+
+RBTree::~RBTree	(){
+	if(root!=NULL) destruir(root);
+}
+
 /**
 returns color of node
 NULL node is black
@@ -71,8 +85,10 @@ inline void RBTree::rightRotate(RBNode *x){
 
 void RBTree::insert(int n){
 	RBNode *node = new RBNode(n);
-	//root = insert(root,node);
-	RBNode *y = NULL;
+	_size++;
+	root = insert(root,node);
+	//standard bst insert
+/*	RBNode *y = NULL;
 	RBNode *x = root;
 	while(x!=NULL){
 		y = x;
@@ -91,11 +107,13 @@ void RBTree::insert(int n){
 		y->r = node;
 	}
 	int nrot = 0;
-	//go up until node is root or parent is black
+*/	//go up until node is root or parent is black
 	while(node!=root && node->p->color==RBRED){	
 		if(node->p == node->p->p->l){
+			//uncle is on right child of grandpa
 			RBNode *u = node->p->p->r;
 			if(color(u)==RBRED){
+				//uncle is red
 				node->p->color = u->color = RBBLK;
 				node->p->p->color = RBRED;
 				node = node->p->p;
@@ -129,6 +147,7 @@ void RBTree::insert(int n){
 }
 
 bool RBTree::buscarNodo(RBNode* N, int key){
+	//standard bst search
 	if (N == NULL || key == N->data){
         return N!=NULL;
     }

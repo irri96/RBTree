@@ -27,8 +27,10 @@ private:
 	inline void rightRotate(RBNode *);
 	RBNode *insert(RBNode *r,RBNode *n);
 	bool buscarNodo(RBNode*, int);
+	void destruir(RBNode *);
 public:
 	RBTree();
+	~RBTree();
 	void insert(int n);
 	bool search(int n);
 	int getSize();

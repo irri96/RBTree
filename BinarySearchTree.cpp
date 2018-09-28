@@ -19,7 +19,7 @@ void BinarySearchTree::destruir(node *nodo){
 }
 
 BinarySearchTree::~BinarySearchTree(){
-	destruir(_root);
+	if(_root!=NULL) destruir(_root);
 }
 
 node* BinarySearchTree::crearNodo(int item){
